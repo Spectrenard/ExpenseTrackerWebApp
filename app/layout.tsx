@@ -1,5 +1,5 @@
 // app/layout.tsx
-import { Dashboard } from "@/components/ui/dashboard";
+import { Sidebar } from "@/components/dashboard";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
@@ -7,8 +7,8 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body>
         <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-          <Dashboard />
-          <main className="flex-1">{children}</main>{" "}
+          <Sidebar />
+          <main className="flex-1 mt-10">{children}</main>{" "}
           {/* Rend le contenu enfant ici */}
         </div>
       </body>
