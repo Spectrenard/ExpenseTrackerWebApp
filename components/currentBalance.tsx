@@ -1,9 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Balance() {
   const [balance, setBalance] = useState("");
   const [isValid, setIsValid] = useState(true);
+  const [isBalanceSet, setIsBalanceSet] = useState(false); // État pour vérifier si le solde est défini
+
+  // Charger le solde depuis le localStorage au démarrage
+  useEffect(() => {
+    const storedBalance = localStorage.getItem("balance");
+    if (storedBalance) {
+      setBalance(storedBalance);
+      setIsBalanceSet(true); // Si un solde est trouvé, le marquer comme défini
+    }
+  }, []);
 
   const handleBalanceChange = (e: any) => {
     setBalance(e.target.value);
@@ -28,7 +38,9 @@ export default function Balance() {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Solde mis à jour avec succès!");
+        console.log("Solde mis à jour avec succès!");
+        setIsBalanceSet(true); // Met à jour l'état pour indiquer que le solde est défini
+        localStorage.setItem("balance", balance); // Enregistre le solde dans le localStorage
       } else {
         alert("Erreur: " + data.message);
       }
@@ -38,23 +50,29 @@ export default function Balance() {
   };
 
   return (
-    <div className="border-solid border-2 border-sky-500 p-4">
-      <h1 className="text-xl">Votre solde actuel</h1>
-      <input
-        type="number"
-        value={balance}
-        onChange={handleBalanceChange}
-        placeholder="Exemple : 1000€"
-        className="border border-gray-300 p-2 rounded mt-2"
-      />
-      <button
-        onClick={handleSubmit}
-        className="border border-gray-300 p-2 rounded mt-2"
-      >
-        Valider
-      </button>
+    <div className="bg-gray-950 text-white rounded-xl shadow-lg p-6 max-w-sm mx-auto">
+      <h1 className="text-sm text-gray-400  mb-4">Votre solde actuel</h1>
+      {!isBalanceSet ? ( // Vérifie si le solde est défini
+        <>
+          <input
+            type="number"
+            value={balance}
+            onChange={handleBalanceChange}
+            placeholder="Exemple : 1000€"
+            className="border border-gray-600 p-2 rounded mt-2 w-full"
+          />
+          <button
+            onClick={handleSubmit}
+            className="bg-sky-500 text-white border border-sky-600 p-2 rounded mt-2 w-full hover:bg-sky-400 transition-colors"
+          >
+            Valider
+          </button>
+        </>
+      ) : (
+        <span className="text-4xl font-medium mt-4">€{balance}</span> // Affiche le solde
+      )}
       {!isValid && (
-        <span className="text-red-500">
+        <span className="text-red-500 mt-2">
           Veuillez insérer votre solde actuel
         </span>
       )}
