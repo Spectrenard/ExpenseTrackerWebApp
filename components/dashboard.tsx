@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home, Package, ShoppingCart, Users } from "lucide-react";
+import { Home, ArrowUpDown, ChartPie, ReceiptEuro } from "lucide-react";
 
 export function Sidebar() {
   return (
@@ -26,7 +26,7 @@ export function Sidebar() {
               href="/budgets"
               className="flex items-center gap-2 p-3 rounded-[8px]  transition-all duration-200 hover:bg-gray-700 focus:bg-gray-600 "
             >
-              <ShoppingCart className="h-5 w-5" />
+              <ArrowUpDown className="h-5 w-5" />
               Budgets
             </Link>
           </li>
@@ -35,7 +35,7 @@ export function Sidebar() {
               href="/transactions"
               className="flex items-center gap-2 p-3 rounded-[8px]  transition-all duration-200 hover:bg-gray-700 focus:bg-gray-600 "
             >
-              <Package className="h-5 w-5" />
+              <ChartPie className="h-5 w-5" />
               Transactions
             </Link>
           </li>
@@ -44,7 +44,7 @@ export function Sidebar() {
               href="/abonnements"
               className="flex items-center gap-2 p-3 rounded-[8px]  transition-all duration-200 hover:bg-gray-700 focus:bg-gray-600 "
             >
-              <Users className="h-5 w-5" />
+              <ReceiptEuro className="h-5 w-5" />
               Abonnements
             </Link>
           </li>
