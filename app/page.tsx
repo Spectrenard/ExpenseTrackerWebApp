@@ -1,10 +1,19 @@
+import { LoginButton } from "@/auth/LoginButton";
 import Balance from "@/components/currentBalance";
 import React from "react";
+import { getServerSession } from "next-auth/next";
+import authConfig from "@/pages/api/auth/[...nextauth]";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const session = await getServerSession(authConfig);
+
+  if (session) {
+    return <p>{JSON.stringify(session, null, 2)}</p>;
+  }
+
   return (
-    <div className="">
-      {/* Ajoute plus de contenu pour le tableau de bord ici */}
+    <div>
+      <LoginButton />
       <Balance />
     </div>
   );
