@@ -7,11 +7,19 @@ const SettingsPage = async () => {
     <div className="flex flex-col items-start pl-8 pb-6">
       {session?.user && (
         <div className="mb-6">
-          <img
-            src={session.user.image || "/default-avatar.png"}
-            alt="Profile"
-            className="w-12 h-12 object-cover rounded-full mb-2"
-          />
+          {session.user.image ? (
+            <img
+              src={session.user.image}
+              alt="Profile"
+              className="w-12 h-12 object-cover rounded-full mb-2"
+            />
+          ) : (
+            <img
+              src="/default-avatar.png"
+              alt="Default Profile"
+              className="w-12 h-12 object-cover rounded-full mb-2"
+            />
+          )}
           <p className="text-md ">{session.user.name || "User"}</p>
           <p className="text-sm text-gray-500">{session.user.email}</p>
         </div>
