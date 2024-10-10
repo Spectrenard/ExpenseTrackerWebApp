@@ -22,7 +22,7 @@ export const authRoutes = ["/auth/login", "/auth/register"];
  * @type {string[]}
  */
 
-export const apiAuthPrefix = "api/auth";
+export const apiAuthPrefix = "/api/auth";
 
 /***
  *

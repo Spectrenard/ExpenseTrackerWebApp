@@ -39,10 +39,18 @@ export const LoginForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
+      login(values)
+        .then((data) => {
+          if (data) {
+            setError(data.error || "");
+            setSuccess(data.success || "");
+          } else {
+            setError("Erreur inattendue !");
+          }
+        })
+        .catch(() => {
+          setError("Erreur lors de la connexion !");
+        });
     });
   };
 
