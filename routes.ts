@@ -14,7 +14,7 @@ export const publicRoutes = ["/"];
  * @type {string[]}
  */
 
-export const authRoutes = ["/auth/login", "/auth/register"];
+export const authRoutes = ["/auth/login", "/auth/register", "/auth/error"];
 
 /***
  *
@@ -29,4 +29,4 @@ export const apiAuthPrefix = "/api/auth";
  *La route de redirection après le login
  * @type {string[]}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT = "/home";
