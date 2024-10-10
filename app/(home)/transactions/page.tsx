@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Modal from "@/components/modal";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 type Transaction = {
@@ -63,12 +62,6 @@ export default function Transactions() {
           </CardContent>
         </Card>
       </div>
-
-      <Modal
-        isVisible={isModalVisible}
-        onClose={handleCloseModal}
-        onSubmit={handleAddTransaction}
-      />
 
       <div className="mt-6">
         <h3 className="text-lg font-semibold">Solde total: {totalBalance}€</h3>
