@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Home, ArrowUpDown, ChartPie, ReceiptEuro } from "lucide-react";
+import SettingsPage from "@/app/(protected)/settings/page";
 
 export function Sidebar() {
   return (
@@ -14,7 +15,7 @@ export function Sidebar() {
         <ul className="flex flex-col gap-4">
           <li>
             <Link
-              href="/home/dashboard"
+              href="/dashboard"
               className="flex items-center gap-2 p-3 rounded-[8px] transition-all duration-200 hover:bg-gray-700 focus:bg-gray-600 "
             >
               <Home className="h-5 w-5" />
@@ -50,6 +51,9 @@ export function Sidebar() {
           </li>
         </ul>
       </nav>
+      <div>
+        <SettingsPage />
+      </div>
     </aside>
   );
 }
